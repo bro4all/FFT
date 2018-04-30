@@ -5,6 +5,7 @@ class fftFixture : public ::testing::Test {
 
 protected:
     virtual void TearDown() {
+        remove(output_file_name);
     }
 
     virtual void SetUp() {
@@ -15,6 +16,7 @@ protected:
 
 public:
     cv::Mat emptyMat;
+    char * output_file_name = (char*)("../../Gray_img.JPG");
 };
 
 TEST_F(fftFixture, basicTest) {
@@ -59,8 +61,9 @@ TEST_F(fftFixture, saveImageTest){
     cv::Mat image;
     fft.load_image("../../img.JPG", image);
 
-    EXPECT_EQ(1, fft.save_image("../../Gray_img.JPG", image));
+    EXPECT_EQ(1, fft.save_image(output_file_name, image));
 
+    EXPECT_EQ(1, fft.load_image(output_file_name, image));
 }
 
 TEST_F(fftFixture, convertGray){
