@@ -100,3 +100,15 @@ void fft::display_image(cv::Mat image){
 
 }
 
+/**
+ * rgb_to_gray:
+ * Takes a Mat source and a Mat address destination.
+ * Converts a BGR 2 Gray scale image.
+ * */
+int fft::rgb_to_gray(cv::Mat src, cv::Mat &dest) {
+    if(src.empty())
+        return 0;
+
+    cv::cvtColor(src, dest, CV_BGR2GRAY);
+    return 1;
+}

@@ -14,7 +14,7 @@ protected:
 
 
 public:
-
+    cv::Mat emptyMat;
 };
 
 TEST_F(fftFixture, basicTest) {
@@ -43,12 +43,25 @@ TEST_F(fftFixture, basicTest) {
 TEST_F(fftFixture, loadImageTest){
     fft fft;
     cv::Mat image;
-    EXPECT_EQ(1, fft.load_image("/Users/Salvo/CLionProjects/fftteam/img.JPG", image));
+    EXPECT_EQ(1, fft.load_image("../../img.JPG", image));
 }
 
 TEST_F(fftFixture, displaImageTest){
     fft fft;
     cv::Mat image;
-    EXPECT_EQ(1, fft.load_image("/Users/Salvo/CLionProjects/fftteam/img.JPG", image));
+    EXPECT_EQ(1, fft.load_image("../../img.JPG", image));
     fft.display_image(image);
+}
+
+TEST_F(fftFixture, convertGray){
+    fft fft;
+    cv::Mat image;
+    EXPECT_EQ(1, fft.load_image("../../img.JPG", image));
+
+    // test valid image given and display the gray result
+    EXPECT_EQ(1, fft.rgb_to_gray(image, image));
+    EXPECT_NO_THROW(fft.display_image(image));
+
+    // test empty image given
+    EXPECT_EQ(0, fft.rgb_to_gray(emptyMat, emptyMat));
 }
