@@ -114,7 +114,7 @@ void fft::display_image(cv::Mat image){
 
 
     cv::namedWindow("Display window", CV_WINDOW_NORMAL);
-    //cv::resizeWindow("Display window", 100, 100);
+    cv::resizeWindow("Display window", 100, 100);
     cv::imshow( "Display window", image);
     cv::waitKey(0);
 
