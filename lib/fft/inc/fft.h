@@ -38,11 +38,19 @@ public:
      *      1 - success
      *      0 - failure
      * */
-
     int load_image(char * file_name, cv::Mat &location);
 
     void display_image(cv::Mat image);
     int save_image(char * file_name, cv::Mat image);
+
+    /**
+     * Converts an image to grayscale
+     *
+     * returns:
+     *      1 - success
+     *      0 - failure
+     * */
+    int rgb_to_gray(cv::Mat src, cv::Mat &dest);
 
 private:
 };
