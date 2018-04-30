@@ -2,6 +2,9 @@
 #include <complex>
 #include <vector>
 #include <iostream>
+#include <opencv2/core/core.hpp>
+#include <opencv2/highgui/highgui.hpp>
+#include <opencv2/imgproc.hpp>
 
 const double PI = 3.141592653589793238460;
 class fft {
@@ -27,6 +30,16 @@ public:
     void fast_fourier_transform(std::vector<std::complex<double>> &x);
     // Inverse FFT
     void inverse_fft(std::vector<std::complex<double>> &x);
+
+    /**
+     * Loads an image from the given filename into the Mat at location
+     *
+     * returns:
+     *      1 - success
+     *      0 - failure
+     * */
+
+    int load_image(char * file_name, cv::Mat &location);
 
 private:
 };
