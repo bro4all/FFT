@@ -43,12 +43,22 @@ TEST_F(fftFixture, basicTest) {
 TEST_F(fftFixture, loadImageTest){
     fft fft;
     cv::Mat image;
-    EXPECT_EQ(1, fft.load_image("/Users/Salvo/CLionProjects/fftteam/img.JPG", image));
+    EXPECT_EQ(1, fft.load_image("../../img.JPG", image));
 }
 
 TEST_F(fftFixture, displaImageTest){
     fft fft;
     cv::Mat image;
-    EXPECT_EQ(1, fft.load_image("/Users/Salvo/CLionProjects/fftteam/img.JPG", image));
+    EXPECT_EQ(1, fft.load_image("../../img.JPG", image));
     fft.display_image(image);
+
+}
+
+TEST_F(fftFixture, saveImageTest){
+    fft fft;
+    cv::Mat image;
+    fft.load_image("../../img.JPG", image);
+
+    EXPECT_EQ(1, fft.save_image("../../Gray_img.JPG", image));
+
 }

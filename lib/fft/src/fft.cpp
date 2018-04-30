@@ -100,3 +100,15 @@ void fft::display_image(cv::Mat image){
 
 }
 
+int fft::save_image(char * file_name, cv::Mat image){
+    if(!image.empty()) {
+        cv::imwrite(file_name, image);
+        std::cout << "New image saved." << std::endl;
+        return 1;
+    }else{
+        std::cout << "New image couldn't be saved." << std::endl;
+        return 0;
+    }
+
+}
+
