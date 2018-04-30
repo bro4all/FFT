@@ -1,26 +1,7 @@
 #include "fft.h"
 
 fft::fft() {
-    //create a gui window:
-    cv::namedWindow("Output",1);
 
-    //initialize a 120X350 matrix of black pixels:
-    cv::Mat output = cv::Mat::zeros( 120, 350, CV_8UC3 );
-
-    //write text on the matrix:
-    cv::putText(output,
-            "Hello World :)",
-            cvPoint(15,70),
-            cv::FONT_HERSHEY_PLAIN,
-            3,
-            cvScalar(0,255,0),
-            4);
-
-    //display the image:
-    cv::imshow("Output", output);
-
-    //wait for the user to press any key:
-    cv::waitKey(0);
 }
 
 
@@ -97,11 +78,10 @@ void fft::inverse_fft(std::vector<std::complex<double>> &x)
 }
 
 int fft::load_image(char * file_name, cv::Mat &location){
-
     location = cv::imread(file_name, CV_LOAD_IMAGE_COLOR);
-    cv::resize(location, location, location.size(), 0.5, 0.5, CV_INTER_AREA);
+    cv::resize(location, location, cv::Size(1024, 768), 0, 0, cv::INTER_CUBIC);
 
-    if(!location.data){
+    if(!location.data) {
         std::cout << "Image not found!" << std::endl;
         return 0;//not found
     }else{
