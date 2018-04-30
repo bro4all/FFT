@@ -41,5 +41,7 @@ public:
 
     int load_image(char * file_name, cv::Mat &location);
 
+    void display_image(cv::Mat image);
+
 private:
 };

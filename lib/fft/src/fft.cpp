@@ -21,7 +21,6 @@ fft::fft() {
 
     //wait for the user to press any key:
     cv::waitKey(0);
-
 }
 
 
@@ -96,3 +95,28 @@ void fft::inverse_fft(std::vector<std::complex<double>> &x)
         x[i] = x[i]/double(x.size());
     }
 }
+
+int fft::load_image(char * file_name, cv::Mat &location){
+
+    location = cv::imread(file_name, CV_LOAD_IMAGE_COLOR);
+    cv::resize(location, location, location.size(), 0.5, 0.5, CV_INTER_AREA);
+
+    if(!location.data){
+        std::cout << "Image not found!" << std::endl;
+        return 0;//not found
+    }else{
+        return 1;//found
+    }
+}
+
+void fft::display_image(cv::Mat image){
+
+
+
+    cv::namedWindow("Display window", CV_WINDOW_NORMAL);
+    //cv::resizeWindow("Display window", 100, 100);
+    cv::imshow( "Display window", image);
+    cv::waitKey(0);
+
+}
+

@@ -18,7 +18,7 @@ public:
 };
 
 TEST_F(fftFixture, basicTest) {
-    fft::fft fft;
+    fft fft;
     std::vector<std::complex<double>> data = { 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0 };
 
     // forward fast_fourier_transform
@@ -38,4 +38,17 @@ TEST_F(fftFixture, basicTest) {
     {
         std::cout << data[i] << std::endl;
     }
+}
+
+TEST_F(fftFixture, loadImageTest){
+    fft fft;
+    cv::Mat image;
+    EXPECT_EQ(1, fft.load_image("/Users/Salvo/CLionProjects/fftteam/img.JPG", image));
+}
+
+TEST_F(fftFixture, displaImageTest){
+    fft fft;
+    cv::Mat image;
+    EXPECT_EQ(1, fft.load_image("/Users/Salvo/CLionProjects/fftteam/img.JPG", image));
+    fft.display_image(image);
 }
