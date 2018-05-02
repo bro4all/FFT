@@ -9,8 +9,7 @@ protected:
     }
 
     virtual void SetUp() {
-
-
+        
     }
 
 
@@ -19,7 +18,7 @@ public:
     char * output_file_name = (char*)("../../Gray_img.JPG");
     char * box = (char*)("../../square1.jpg");
     char * boat = (char*)("../../img.JPG");
-
+    char * clown = (char*)("../../cln1.jpg");
 };
 
 TEST_F(fftFixture, basicTest) {
