@@ -91,7 +91,7 @@ int fft::load_image(char * file_name, cv::Mat &location, int height, int width){
 
 void fft::display_image(cv::Mat image){
     cv::namedWindow("Display window", CV_WINDOW_NORMAL);
-    cv::resizeWindow("Display window", 100, 100);
+    cv::resizeWindow("Display window", window_size_sm.height, window_size_sm.width);
     cv::imshow( "Display window", image);
     cv::waitKey(0);
 }
