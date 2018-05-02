@@ -7,6 +7,10 @@
 #include <opencv2/imgproc.hpp>
 
 const double PI = 3.141592653589793238460;
+struct WINDOW_SIZE_SM {
+    int height = 250;
+    int width = 250;
+};
 
 class fft {
 public:
@@ -132,4 +136,5 @@ public:
 
 private:
     int nearest_pow_2(int n, int *m, int *twopm);
+    const WINDOW_SIZE_SM window_size_sm;
 };
