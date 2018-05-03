@@ -106,3 +106,16 @@ TEST_F(fftFixture, fftForwardTest){
     //fft.center_frequency_on_mat(fourier_image);
     fft.display_image(fourier_image);
 }
+TEST_F(fftFixture,fftsaveimage){
+    fft fft;
+    cv::Mat image;
+    EXPECT_EQ(1,fft.load_image(boat,image,256,256));
+    EXPECT_EQ(1,fft.rgb_to_gray(image,image));
+    std::vector<std::complex<double>>x[256];
+    fft.real_to_complex_matrix(image,x);
+    fft.fft2d(x,256,256,1);
+    cv::Mat fourier_image;
+    fft.complex_matrix_to_mat(x,fourier_image,256,256);
+    fft.display_image(fourier_image);
+    EXPECT_EQ(1,fft.save_image(output_file_name,image));
+}
